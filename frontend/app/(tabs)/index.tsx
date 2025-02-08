@@ -1,4 +1,6 @@
 import { Image, StyleSheet, Platform, View, Text} from 'react-native';
+import {Camera, CameraType} from 'expo-camera';
+// import Webcam from 'react-native-webcam';
 
 // import { HelloWave } from '@/components/HelloWave';
 // import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -10,7 +12,6 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to SightBridge.</Text>
       <Text style={styles.text}>Sight through computer vision.</Text>
-      
     </View>
   );
 }
