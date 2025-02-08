@@ -70,6 +70,6 @@ class Navigation:
                 break
 
 # Example Usage
-if __name__ == "__main__":
-    navigator = Navigation("Carnegie Mellon University", "Wushiland Boba - S Craig St (CMU)", api_key="AIzaSyDUId9XbwIt4TX-Sat7HqAJRpIhmuHc_CE")
-    navigator.start_navigation()
+# if __name__ == "__main__":
+#     navigator = Navigation("Carnegie Mellon University", "Wushiland Boba - S Craig St (CMU)", api_key="AIzaSyDUId9XbwIt4TX-Sat7HqAJRpIhmuHc_CE")
+#     navigator.start_navigation()

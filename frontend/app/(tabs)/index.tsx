@@ -7,6 +7,14 @@ const AppComponent = () => {
   const [navigationMode, setIsTrue] = useState(false);
   const navigation = useNavigation();
   
+  const startNavigation = () => {
+    try {
+      const response = api.get('/navigate');
+    } catch (error) {
+      console.log("ERROR", error);
+    }
+  }
+
   const startDet = () => {
     setIsTrue(true);
     try {
@@ -14,6 +22,12 @@ const AppComponent = () => {
     } catch (error) {
       console.log("ERROR", error);
     }
+  };
+
+  const handlePress = () => {
+    console.log("handlePress Started");
+    startDet(); // Call startDet function
+    startNavigation(); // Call startNavigation function
   };
 
   const stopDet = () => {
@@ -25,7 +39,7 @@ const AppComponent = () => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={startDet}>
+    <TouchableWithoutFeedback onPress={handlePress}>
         <View style={styles.container}>
           <Text style={[styles.text, {color: navigationMode ? "black" : "white"}]}>Welcome to SightBridge.</Text>
         </View>

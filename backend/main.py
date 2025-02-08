@@ -45,16 +45,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-##test
-memory_db = {"fruits": []}
 
 @app.get("/classify")
 def classify():
     sort.deepSort()
 
 @app.get("/stopClassify")
-def classify():
+def stopClassify():
     sort.stopRunning()
+
+@app.get("/navigate")
+def navigate():
+    navigator.start_navigation()
 
 
 
