@@ -1,16 +1,29 @@
-import { Image, StyleSheet, Platform, View, Text} from 'react-native';
+import { Image, StyleSheet, Platform, View, Text, Button } from 'react-native';
 
-// import { HelloWave } from '@/components/HelloWave';
-// import ParallaxScrollView from '@/components/ParallaxScrollView';
-// import { ThemedText } from '@/components/ThemedText';
-// import { ThemedView } from '@/components/ThemedView';
+
+import { HelloWave } from '@/components/HelloWave';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import api from '@/api/api'
 
 export default function HomeScreen() {
+  const handlePress = () => {
+    try {
+      const response = api.get('/classify')
+    } catch (error) {
+      
+    }
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to SightBridge.</Text>
       <Text style={styles.text}>Sight through computer vision.</Text>
-      
+      <Button
+        title="Click this to Start Detection"
+        onPress={handlePress}
+        accessibilityLabel="Start object detection"
+      />
     </View>
   );
 }
