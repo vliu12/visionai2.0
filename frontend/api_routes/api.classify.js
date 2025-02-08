@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import api from '../api/api'
 
-const startDetection = () => {
+export const startDetection = () => {
     // const[data, setData] = useState([])
     // after some voice activation we call this
     // after we click the x button we stop this

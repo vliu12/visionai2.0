@@ -8,21 +8,37 @@ import { ThemedView } from '@/components/ThemedView';
 import api from '@/api/api'
 
 export default function HomeScreen() {
-  const handlePress = () => {
+  
+  const startDet = () => {
     try {
       const response = api.get('/classify')
     } catch (error) {
-      
+      console.log("ERROR", error)
     }
   };
+
+  const stopDet = () => {
+    try {
+      const response = api.get('/stopClassify')
+    } catch (error) {
+      console.log("ERROR", error)
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to SightBridge.</Text>
       <Text style={styles.text}>Sight through computer vision.</Text>
       <Button
         title="Click this to Start Detection"
-        onPress={handlePress}
+        onPress={startDet}
         accessibilityLabel="Start object detection"
+      />
+
+<Button
+        title="Click this to Stop Detection"
+        onPress={stopDet}
+        accessibilityLabel="Stop object detection"
       />
     </View>
   );
