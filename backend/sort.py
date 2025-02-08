@@ -102,10 +102,9 @@ def getObject(keyToObject):
 
 print(getObject(keyToObject))
 
-isRunning = True;
-
 def deepSort():
     global isRunning
+    isRunning = True;
 
     warning_file = "log.txt"
 
