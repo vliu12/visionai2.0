@@ -3,8 +3,11 @@ import cv2
 import torch
 from deep_sort_realtime.deepsort_tracker import DeepSort
 
+isRunning = True;
 
 def deepSort():
+    global isRunning
+    isRunning = True;
     model = YOLO("yolo11n.pt")
 
     tracker = DeepSort(
@@ -16,11 +19,13 @@ def deepSort():
 
     camera = cv2.VideoCapture(1)
 
+
     # cv2.namedWindow("Camera Feed")
 
-    while True:
+    while isRunning:
         ret, frame = camera.read()
 
+        
         if not ret:
             print("Error: Could not capture image.")
             break
@@ -62,5 +67,9 @@ def deepSort():
 
     camera.release()
 
-
     cv2.destroyAllWindows()
+
+def stopRunning():
+    ##stop the loop
+    global isRunning
+    isRunning = False
