@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 import sort
+from navigation import Navigation
 
 from ultralytics import YOLO
 import cv2
@@ -11,6 +12,9 @@ import cv2
 # Getting data from Maggie's Open CV --> arrays of things and identified objects
 # in here i do the deep sort --> give us displacement so we can calculate area of image which shows the distance between us and the thing
 # 
+
+navigator = Navigation("Carnegie Mellon University", "Wushiland Boba - S Craig St (CMU)", api_key="AIzaSyDUId9XbwIt4TX-Sat7HqAJRpIhmuHc_CE")
+# navigator.start_navigation()
 
 
 ## it can automatically validate data coming in and it

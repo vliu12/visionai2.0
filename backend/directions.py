@@ -5,10 +5,13 @@ from datetime import datetime
 import time
 import os
 import subprocess
+from speak import TextToSpeech
 
 instructions = []
 timer = []
 distance = []
+
+tts = TextToSpeech()
 
 # Define the API endpoint and parameters
 url = "https://maps.googleapis.com/maps/api/directions/json"
@@ -40,13 +43,17 @@ def printWithTime(data, distance, instructions, timer):
     start_time = time.time()  # Record the start time
 
     i = 0
+    tts.speak('starting navigation to Wushiland Boba!')
+
     for timing in range(len(timer)):
         minutes = int(timer[timing].split(" ")[0])
         seconds = minutes*60
         time.sleep(10)
-        print('starting navigation!')
 
-        print(f'{instructions[i]}')
+        
+        tts.speak('starting navigation!')
+
+        tts.speak(f'{instructions[i]}')
         print(f'{seconds} seconds')
         
         time.sleep(seconds * 1.05) 
@@ -93,7 +100,3 @@ def process_directions(data):
 instructions, distance, timer = process_directions(data)
 
 printWithTime(data, distance, instructions, timer)
-
-print(instructions)
-print(distance)
-print(timer)
