@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
+import sort
 
 from ultralytics import YOLO
 import cv2
@@ -38,6 +39,11 @@ app.add_middleware(
 
 ##test
 memory_db = {"fruits": []}
+
+@app.get("/classify")
+def classify():
+    sort.deepSort()
+
 @app.get("/fruits", response_model=Fruits)
 def get_fruits():
     return Fruits(fruits=memory_db["fruits"])
