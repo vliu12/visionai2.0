@@ -3,6 +3,7 @@ import re
 import geocoder
 import time
 from speak import TextToSpeech
+from chatwgpt import GPTSpeechAssistant
 
 class Navigation:
     def __init__(self, origin, destination, mode="walking", api_key="YOUR_API_KEY"):
@@ -15,6 +16,7 @@ class Navigation:
         self.distance = []
         self.tts = TextToSpeech()
         self.data = self.get_directions()
+        self.chat = GPTSpeechAssistant() 
     
     def get_directions(self):
         url = "https://maps.googleapis.com/maps/api/directions/json"
@@ -55,6 +57,8 @@ class Navigation:
     def start_navigation(self):
         self.process_directions()
         start_time = time.time()
+        self.chat.assist_user()
+
         self.tts.speak(f'Starting navigation to {self.destination}!')
 
         for i in range(len(self.timer)):
@@ -65,7 +69,7 @@ class Navigation:
             print(f'{seconds} seconds')
             time.sleep(seconds * 1.05)
             
-            if time.time() - start_time >= 800:
+            if time.time() - start_time >= 1000:
                 self.tts.speak("An unexpected error occurred. Timed out.")
                 break
 
