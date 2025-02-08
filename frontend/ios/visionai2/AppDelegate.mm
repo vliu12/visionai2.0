@@ -5,6 +5,17 @@
 
 @implementation AppDelegate
 
+
+#import <GoogleMaps/GoogleMaps.h>
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Provide your Google Maps API Key
+  [GMSServices provideAPIKey:@"AIzaSyAF_CDUo3RrxvP4HUVBQEubFOwo1jGFC7I"];
+  return YES;
+}
+
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.moduleName = @"main";
