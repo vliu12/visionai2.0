@@ -33,7 +33,7 @@ recognizer = sr.Recognizer()
 while True:
     try:
         with sr.Microphone() as mic:
-            speak("where are you headed?")
+            speak("where are you headed to?")
             recognizer.adjust_for_ambient_noise(mic, duration=0.5)
             audio = recognizer.listen(mic, timeout = 5, phrase_time_limit=8)
 
@@ -53,8 +53,5 @@ destination = chat_with_gpt("return ONLY The destination the user is looking bas
 
 speak("Okay, navigating to" + destination)
 
-# speak(ai_response)
-
-# speak("okay, navigating to" + text)
 
 

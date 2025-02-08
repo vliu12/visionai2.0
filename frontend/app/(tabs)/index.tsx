@@ -1,19 +1,52 @@
-import { Image, StyleSheet, Platform, View, Text} from 'react-native';
+import { Image, Platform, View, Text, TouchableWithoutFeedback, Alert, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import api from '@/api/api';
 
-// import { HelloWave } from '@/components/HelloWave';
-// import ParallaxScrollView from '@/components/ParallaxScrollView';
-// import { ThemedText } from '@/components/ThemedText';
-// import { ThemedView } from '@/components/ThemedView';
+const AppComponent = () => {
+  const [navigationMode, setIsTrue] = useState(false);
+  const navigation = useNavigation();
+  
+  const startNavigation = () => {
+    try {
+      const response = api.get('/navigate');
+    } catch (error) {
+      console.log("ERROR", error);
+    }
+  }
 
-export default function HomeScreen() {
+  const startDet = () => {
+    setIsTrue(true);
+    try {
+      const response = api.get('/classify');
+    } catch (error) {
+      console.log("ERROR", error);
+    }
+  };
+
+  const handlePress = () => {
+    console.log("handlePress Started");
+    startDet(); // Call startDet function
+    startNavigation(); // Call startNavigation function
+  };
+
+  const stopDet = () => {
+    try {
+      const response = api.get('/stopClassify');
+    } catch (error) {
+      console.log("ERROR", error);
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Welcome to SightBridge.</Text>
-      <Text style={styles.text}>Sight through computer vision.</Text>
-      
-    </View>
+    <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={styles.container}>
+          <Text style={[styles.text, {color: navigationMode ? "black" : "white"}]}>Welcome to SightBridge.</Text>
+        </View>
+      </TouchableWithoutFeedback>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -29,3 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default AppComponent;
