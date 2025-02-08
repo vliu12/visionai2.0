@@ -4,6 +4,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 
+from ultralytics import YOLO
+import cv2
+
+# Getting data from Maggie's Open CV --> arrays of things and identified objects
+# in here i do the deep sort --> give us displacement so we can calculate area of image which shows the distance between us and the thing
+# 
+
+
 ## it can automatically validate data coming in and it
 ## can format data going out based on Pydantic models
 class Fruit(BaseModel):
