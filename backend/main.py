@@ -1,4 +1,7 @@
+
 import uvicorn
+import os
+print("current working directory: ", os.getcwd())
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -8,6 +11,7 @@ from navigation import Navigation
 
 from ultralytics import YOLO
 import cv2
+
 
 # Getting data from Maggie's Open CV --> arrays of things and identified objects
 # in here i do the deep sort --> give us displacement so we can calculate area of image which shows the distance between us and the thing
