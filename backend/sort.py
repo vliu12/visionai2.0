@@ -58,6 +58,8 @@ def deepSort():
         if key == ord('q'):
             break
 
+        print (detections)
+
     camera.release()
 
 
